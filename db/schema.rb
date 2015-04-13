@@ -11,9 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150413005718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "users", force: :cascade do |t|
+    t.string  "name"
+    t.integer "fb",   limit: 8
+  end
+
+  add_index "users", ["fb"], name: "index_users_on_fb", using: :btree
 
 end

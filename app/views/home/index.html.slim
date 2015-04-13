@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-md-12
+      h1.page-header
+        ' State
+        = link_to('reload data', reload_path, method: :post, class: 'btn btn-primary')
+      ul.list-group
+        - @users.each do |user|
+          li.list-group-item data-id=user.id
+            .btn-group role='group'
+              a.btn.btn-warning href=root_path(@params.merge(left_user: user.id)) class=('active' if user == @left_user)
+                = icon('arrow-left')
+              a.btn.btn-warning href=root_path(@params.merge(right_user: user.id)) class=('active' if user == @right_user)
+                = icon('arrow-right')
+            = user.name
+  .row
+    .col-md-12
+      | &nbsp;
+  .row
+    .col-md-5.bg-info
+      | left
+    .col-md-2
+    .col-md-5.bg-info
+      | right

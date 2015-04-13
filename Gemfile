@@ -20,6 +20,8 @@ gem 'uglifier'
 
 gem 'jbuilder'
 
+gem 'koala'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console'
