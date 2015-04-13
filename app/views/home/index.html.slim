@@ -4,6 +4,9 @@
       h1.page-header
         ' State
         = link_to('reload data', reload_path, method: :post, class: 'btn btn-primary')
+      .well
+        = @subscriptions
+        a.btn.btn-success href=subscribe_path
       ul.list-group
         - @users.each do |user|
           li.list-group-item data-id=user.id
@@ -13,12 +16,13 @@
               a.btn.btn-warning href=root_path(@params.merge(right_user: user.id)) class=('active' if user == @right_user)
                 = icon('arrow-right')
             = user.name
+            =< icon('check-square-o') if user.token
   .row
     .col-md-12
       | &nbsp;
   .row
-    .col-md-5.bg-info
-      | left
+    .col-md-5
+      = render 'user', user: @left_user, side: 'left'
     .col-md-2
-    .col-md-5.bg-info
-      | right
+    .col-md-5
+      = render 'user', user: @right_user, side: 'right'

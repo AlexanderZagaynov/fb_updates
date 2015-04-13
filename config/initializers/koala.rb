@@ -6,6 +6,7 @@ end
 module Facebook
   APP_ID = ENV['FB_APP_ID'].to_s
   SECRET = ENV['FB_APP_SECRET'].to_s
+  SVToken = SecureRandom.hex
 end
 
 Koala::Facebook::OAuth.class_eval do

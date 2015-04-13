@@ -1,0 +1,10 @@
+- unless user
+  h3 = "Please, select #{side} user"
+- else
+  - pp user.friends
+  h3 = user.name
+  p = user.token ? 'Authorized' : 'Not authorized'
+  ul.list-group
+  - user.friends && user.friends.each do |friend|
+    li.list-group-item data-id=friend['id']
+      = friend['name']
